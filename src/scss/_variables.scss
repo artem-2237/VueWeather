@@ -3,13 +3,35 @@ $value-text: #ffffff;
 $bg-image: url('../src/assets/cloud.jpg');
 
 $themes: (
-  cloud: (
-    main-color: #d66c05,
+  clouds: (
+    main-color: #565a8a,
     bg-image: url('../src/assets/cloud.jpg'),
+    icon-image: url('../src/assets/icons/clouds.png'),
+    label-text: #2f3438,
   ),
   clear: (
-    main-color: #a9cee1,
-    bg-image: url('../src/assets/clear-sky.png'),
+    main-color: #3c85dd,
+    bg-image: url('../src/assets/clear.jpg'),
+    icon-image: url('../src/assets/icons/clear.png'),
+    label-text: #3b3b3b,
+  ),
+  mist: (
+    main-color: #828983,
+    bg-image: url('../src/assets/mist.jpg'),
+    icon-image: url('../src/assets/icons/mist.png'),
+    label-text: #73828a,
+  ),
+  rain: (
+    main-color: #a93646,
+    bg-image: url('../src/assets/rain.jpg'),
+    icon-image: url('../src/assets/icons/rain.png'),
+    label-text: #73828a,
+  ),
+  snow: (
+    main-color: #537da5,
+    bg-image: url('../src/assets/snow.jpg'),
+    icon-image: url('../src/assets/icons/snow.png'),
+    label-text: #73828a,
   ),
 );
 

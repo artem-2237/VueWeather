@@ -1,21 +1,34 @@
 import axios from '@/axios/weather.js'
+import store from '@/store'
 
 export default {
   namespaced: true,
-  state: {
-    weatherInfo: null,
+  state() {
+    return {
+      weatherInfo: null,
+    }
   },
   getters: {
-    weatherInfo(state) {
+    currentWeather(state) {
       if (state.weatherInfo) {
-        const w = state.weatherInfo
-        return {
-          temp: Math.round(w.main.temp),
-          wind: w.wind.speed.toFixed(1),
-          humidity: w.main.humidity,
-          cloudy: w.clouds.all,
+        const w = state.weatherInfo.current
+        const weather = {
+          temp: Math.round(w.temp),
+          wind: w['wind_speed'].toFixed(1),
+          humidity: w.humidity,
+          cloudy: w.clouds,
           weather: w.weather[0].main
         }
+        if (w.rain) weather.rain = w.rain['1h']
+        if (w.snow) weather.snow = w.snow['1h']
+        return weather
+      } else {
+        return state.weatherInfo
+      }
+    },
+    forecastWeather(state) {
+      if (state.weatherInfo) {
+        return state.weatherInfo.daily
       } else {
         return state.weatherInfo
       }
@@ -28,11 +41,20 @@ export default {
   },
   actions: {
     async loadWeatherInfo({commit}) {
-      const url = process.env.VUE_APP_WEATHER_API_URL
-      const key = process.env.VUE_APP_WEATHER_API_KEY
-      const { data } = await axios.get(`${url}?lat=${-4}&lon=${15}&units=metric&appid=${key}`)
-      commit('setWeatherInfo', await data)
-      console.log(data)
+      try {
+        const coords = store.getters['citiesModule/curCity']
+        const { data } = await axios.get('',{params: {
+          lat: coords.lat,
+            lon: coords.lon,
+            exclude: 'hourly',
+            units: 'metric',
+            appid: process.env.VUE_APP_WEATHER_API_KEY
+        }})
+        commit('setWeatherInfo', data)
+        commit('setTheme', data.current.weather[0].main.toLowerCase(), {root: true})
+      } catch(e) {
+        console.log(e)
+      }
     }
   }
 }
