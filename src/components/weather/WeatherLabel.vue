@@ -15,20 +15,42 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useTwoNumsFormat } from '@/utils/useTwoNumsFormat'
 
 export default {
   name: 'WeatherLabel',
   setup() {
     const timeFormat = useTwoNumsFormat
+
     const dayMap = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const monthMap = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-    const d = new Date()
+
+    let clock
+    let d = new Date()
     const date = ref({
       time: `${timeFormat(d.getHours())}:${timeFormat(d.getMinutes())}`,
       day: dayMap[+d.getDay()],
       date: `${d.getDate()} ${monthMap[+d.getMonth()]} '${d.getFullYear() - 2000}`
+    })
+
+    const setTime = () => {
+      d = new Date()
+      date.value = {
+        time: `${timeFormat(d.getHours())}:${timeFormat(d.getMinutes())}`,
+        day: dayMap[+d.getDay()],
+        date: `${d.getDate()} ${monthMap[+d.getMonth()]} '${d.getFullYear() - 2000}`
+      }
+    }
+
+    onMounted(() => {
+      clock = setInterval(() => {
+        setTime()
+      }, 1000)
+    })
+
+    onUnmounted(() => {
+      clearInterval(clock)
     })
 
     return {
