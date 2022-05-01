@@ -45,6 +45,9 @@ span
   align-items: center
   min-width: 85px
   margin: 0 10px
+  border-radius: 8px
+  border: 1px outset #ccc
+  background: transparentize(#b4b4b4, .7)
   &__icon
     margin-bottom: 25px
   &__title

@@ -4,10 +4,10 @@ $bg-image: url('../src/assets/cloud.jpg');
 
 $themes: (
   clouds: (
-    main-color: #565a8a,
-    bg-image: url('../src/assets/cloud.jpg'),
+    main-color: #b24a53,
+    bg-image: url('../src/assets/clouds.jpg'),
     icon-image: url('../src/assets/icons/clouds.png'),
-    label-text: #2f3438,
+    label-text: #668198,
   ),
   clear: (
     main-color: #3c85dd,
@@ -19,19 +19,19 @@ $themes: (
     main-color: #828983,
     bg-image: url('../src/assets/mist.jpg'),
     icon-image: url('../src/assets/icons/mist.png'),
-    label-text: #73828a,
+    label-text: #5a6972,
   ),
   rain: (
-    main-color: #a93646,
-    bg-image: url('../src/assets/rain.jpg'),
+    main-color: #4a6085,
+    bg-image: url('../src/assets/rain.webp'),
     icon-image: url('../src/assets/icons/rain.png'),
-    label-text: #73828a,
+    label-text: #354c4f,
   ),
   snow: (
     main-color: #537da5,
     bg-image: url('../src/assets/snow.jpg'),
     icon-image: url('../src/assets/icons/snow.png'),
-    label-text: #73828a,
+    label-text: #52696e,
   ),
 );
 

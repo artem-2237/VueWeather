@@ -64,9 +64,12 @@ export default {
 @media (max-width: 1500px)
   .weather-label
     margin: 0 0 150px 50px
+@media (max-width: 1200px)
+  .weather-label
+    margin: 150px 0 0 50px
 @media (max-width: 730px)
   .weather-label
-    margin: 0 0 100px 30px
+    margin: 100px 0 0 30px
     &__temp
       font-size: 70px
     &__city
@@ -78,7 +81,7 @@ export default {
       font-size: 55px
     &__city
       font-size: 25px
-      margin-bottom: 8px
+      margin-bottom: 5px
     &__date, &__type
       font-size: 12px
 @media (max-width: 410px)
@@ -87,7 +90,7 @@ export default {
     &__temp
       font-size: 50px
     &__city
-      font-size: 20px
+      font-size: 23px
     &__details
       margin-right: 15px
     &__date, &__type
