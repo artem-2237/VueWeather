@@ -11,17 +11,16 @@ export default {
   },
   getters: {
     cities(state) {
-      if (state.cities) {
-        return state.cities.map(el => {
-          return {
-            id: el.Key,
-            name: el.AdministrativeArea.EnglishName.replace(' City', ''),
-            country: el.Country.EnglishName,
-            lat: el.GeoPosition.Latitude.toFixed(0),
-            lon: el.GeoPosition.Longitude.toFixed(0),
-          }
-        })
-      }
+      console.log('updated')
+      return state.cities?.map(el => {
+        return {
+          id: el.Key,
+          name: el.AdministrativeArea.EnglishName.replace(' City', ''),
+          country: el.Country.EnglishName,
+          lat: el.GeoPosition.Latitude.toFixed(0),
+          lon: el.GeoPosition.Longitude.toFixed(0),
+        }
+      }) || []
     },
     curCity: state => state.curCity,
     recommendCities: state => state.recommendCities
